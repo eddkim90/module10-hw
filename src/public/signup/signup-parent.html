@@ -1,0 +1,70 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">Sign Up Form</h2>
+    <div class="text-center">
+        Please fill in the information below to receive a newsletter from us! :)
+    </div>
+
+    <!-- Fill out the form here -->
+    <fieldset>
+        <form name="regForm" class="form-group" novalidate>
+
+            <input type="text" name="firstName" placeholder="First Name"
+                     ng-model="menuSignup.user.firstname" required="required" minlength="3">
+            <span ng-if="(regForm.firstName.$error.minlength || regForm.firstName.$error.required) && regForm.firstName.$touched">
+                First name must be more than 3 characters long!
+            </span>
+
+            <br/>
+            <br/>
+            <input type="text" name="lastName" placeholder="Last Name" ng-model="menuSignup.user.lastname" required="required"
+                   minlength="4">
+            <span ng-if="(regForm.lastName.$error.minlength || regForm.lastName.$error.required) && regForm.lastName.$touched">
+                Last name must be more than 4 characters long!
+            </span>
+
+            <br/>
+            <br/>
+            <input type="email" name="email" placeholder="E-Mail" ng-model="menuSignup.user.email" required="required"
+                   minlength="5">
+            <span ng-if="(regForm.email.$error.required || regForm.email.$error.email) && regForm.email.$touched">
+                Not a valid email!
+            </span>
+            <span ng-if="(regForm.email.$error.minlength || regForm.email.$error.email) && regForm.email.$touched">
+                Email must be more than 5 characters long!
+            </span>
+
+            <br/>
+            <br/>
+            <input type="tel" name="telephone" placeholder="### - ### - ####" ng-model="menuSignup.user.phone" required="required"
+                   pattern="(\d{3})-(\d{3})-(\d{4})">
+            <span ng-if="(regForm.telephone.$invalid && regForm.telephone.$touched)">
+                Phone must be in the format of ###-###-####
+            </span>
+
+            <br/>
+            <br/>
+            <input type="text" name="menuItem" placeholder="Menu Item Short Name" ng-model="menuSignup.user.menuitem"
+                   required="required" minlength="2">
+            <span ng-if="(regForm.menuItem.$error.minlength || regForm.menuItem.$error.required)
+                    && regForm.menuItem.$touched">
+                Menu Item must be more than 2 characters long!
+            </span>
+
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-default" ng-click="menuSignup.submit()"
+                    ng-disabled="regForm.$invalid">Submit</button>
+
+            <br/>
+            <br/>
+            <div ng-if="menuSignup.completed" class="alert alert-success">
+                <strong>Success!</strong> Your information has been saved!
+            </div>
+            <div ng-if="menuSignup.failed" class="alert alert-danger">
+                <strong>Error!</strong> No such menu number exists!
+            </div>
+        </form>
+
+    </fieldset>
+
+</div>

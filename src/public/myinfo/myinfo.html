@@ -1,0 +1,60 @@
+<div class="container">
+    <h2 id="menu-categories-title" class="text-center">My Information</h2>
+    <div class="text-center">Displaying your Account Information</div>
+
+    <div ng-if="myInfo.count > 0">
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <th>Title</th>
+                    <th>Content</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ myInfo.account.firstname }} {{ myInfo.account.lastname }}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{ myInfo.account.email }}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone #</td>
+                        <td>{{ myInfo.account.phone }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br/>
+            <br/>
+            <table class="table">
+                <thead>
+                    <th>Menu Title</th>
+                    <th>Menu Content</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Category Short Name</td>
+                        <td>{{ myInfo.account.item.category_short_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{ myInfo.account.item.name }}</td>
+                    </tr>
+                    <tr>
+                        <td>Price</td>
+                        <td>{{ myInfo.account.item.price_large | currency }}</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td>{{ myInfo.account.item.description }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div ng-if="myInfo.count === 0" class="alert alert-danger">
+        <strong>Error!</strong> Not Signed Up Yet. Sign up Now!
+    </div>
+</div>
